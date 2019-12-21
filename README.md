@@ -183,7 +183,7 @@ The following screenshot is the jupyter notebook on the browser. Locate the 'mot
  4. __step 4__: To train the neural network, run the following code in the terminal. The following code trains the neural network
     on default parameters. If you wish to change the parameters, arguments are provided
  
-    **_python train_cnn.py_**
+    **_python train.py_**
  
     Arguments:
     _--epochs_ (number of epochs for training)
