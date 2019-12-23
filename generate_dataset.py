@@ -11,18 +11,22 @@ import os, sys
 from tkinter.filedialog import askopenfilename
 
 annotation_type = input("[NOTE.....] If you are trying to store positive examples, enter yes; else type no: ")
+with open("config.yml", "r") as stream:
+    config_data= yaml.safe_load(stream)
+path = config_data["root_dir"]
+grab_size = int(config_data["annotation_size"])
 ix,iy = -1,-1
 # mouse callback function
 def draw_circle(event,x,y,flags,param):
     global ix,iy
     if event == cv2.EVENT_LBUTTONDBLCLK:
+        if ix>0 and iy>0:
+            cv2.circle(img, (ix, iy), round(grab_size/8), (0, 255, 0), -1)
         ix,iy = x,y
 
+
 # Read the yml configuration file to iddentify the root directory
-with open("config.yml", "r") as stream:
-    config_data= yaml.safe_load(stream)
-path = config_data["root_dir"]
-grab_size = int(config_data["annotation_size"])
+
 root = tkinter.Tk()
 movieName =  askopenfilename(filetypes=[("Video files","*")])
 cap = cv2.VideoCapture(movieName)
