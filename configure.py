@@ -87,5 +87,10 @@ while(cap.isOpened() & (i<(nframe-steps))):
     # close all open windows
     cv2.destroyAllWindows()
     break
+threshold_value1 = input("[REQUIRED.....] Enter the lower threshold limit! You can input a dummy value and change it later if you are unsure : ")
+specifications.__setitem__('threshold_value1', threshold_value1)
+threshold_value2 = input("[REQUIRED.....] Enter the higher threshold limit! You can input a dummy value and change it later if you are unsure : ")
+specifications.__setitem__('threshold_value2', threshold_value2)
+
 with io.open("config.yml", "w", encoding= "utf8") as outfile:
     yaml.dump(specifications, outfile, default_flow_style= False, allow_unicode= True)

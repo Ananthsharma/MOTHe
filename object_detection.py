@@ -12,7 +12,8 @@ with open("config.yml", "r") as stream:
     config_data= yaml.safe_load(stream)
 path = config_data["root_dir"]
 grabsize = (int(config_data["annotation_size"]))
-
+threshold_value1 = (int(config_data["threshold_value1"]))
+threshold_value2 = (int(config_data["threshold_value2"]))
 #Open video fileimport Tkinter
 from tkinter.filedialog import askopenfilename
 #Open the video file which needs to be processed
@@ -64,8 +65,8 @@ while(cap.isOpened() & (i<(nframe-steps))):
   params = cv2.SimpleBlobDetector_Params()
 
   # Change thresholds
-  params.minThreshold = 150;
-  params.maxThreshold = 250;
+  params.minThreshold = threshold_value1;
+  params.maxThreshold = threshold_value2;
 
   # Filter by Area.
   #params.filterByArea = False
